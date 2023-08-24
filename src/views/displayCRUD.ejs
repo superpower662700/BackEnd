@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .btl-button {
+        outline: none;
+        border: none;
+        background: orange;
+        height: 25px;
+        width: 60px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+</head>
+
+<body>
+    <a href="/crud">ADD</a>
+    <table style="width:100%">
+        <tr>
+            <td>ID</td>
+            <td>Emil</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Address</td>
+            <td>Phone Number</td>
+            <td>Gender</td>
+            <td>roleId</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        <% for(let i=0; i < message.length; i++) { %>
+            <tr>
+                <td>
+                    <%= message[i].id %>
+                </td>
+                <td>
+                    <%= message[i].email %>
+                </td>
+                <td>
+                    <%= message[i].firstName %>
+                </td>
+                <td>
+                    <%= message[i].lastName %>
+                </td>
+                <td>
+                    <%= message[i].address %>
+                </td>
+                <td>
+                    <%= message[i].phonenumber %>
+                </td>
+                <td>
+                    <%= message[i].gender %>
+                </td>
+                <td>
+                    <%= message[i].roleId %>
+                </td>
+                <td>
+                    <a href="/edit-crud?id=<%= message[i].id%>" class="btl-button" type="button">update</a>
+                </td>
+                <td>
+                    <a href="/delete-crud?id=<%= message[i].id%>" class="btl-button" type="button">delete</a>
+                </td>
+
+
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>
