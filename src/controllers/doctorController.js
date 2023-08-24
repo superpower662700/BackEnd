@@ -66,10 +66,12 @@ let getBulkCreateSchedule = async (req, res) => {
     } catch (e) {
         return res.status(200).json({
             errCode: -1,
-            errMessage: 'Error Detail Doctor By ID....'
+            errMessage: 'Error Detail Doctor By ID'
         })
     }
 }
+
+
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctor: getAllDoctor,
