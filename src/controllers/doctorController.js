@@ -66,15 +66,38 @@ let getBulkCreateSchedule = async (req, res) => {
     } catch (e) {
         return res.status(200).json({
             errCode: -1,
-            errMessage: 'Error Detail Doctor By ID'
+            errMessage: 'Error Detail Doctor By ID...'
         })
     }
 }
 
+let getScheduleByDate = async (req, res) => {
+    try {
+        let response = await doctorServices.getScheduleByIdDate(req.query.doctorId, req.query.date);
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error Detail Doctor By ID...'
+        })
+    }
+}
 
+let getDoctorInforById = async (req, res) => {
+    try {
+        let response = await doctorServices.getInforDoctorById(req.query.doctorId);
+        return res.status(200).json(response)
+    } catch (e) {
+        return res.status(200).json({
+            errCode: -1,
+            errMessage: 'Error Detail Doctor By ID...'
+        })
+    }
+}
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctor: getAllDoctor,
     postInforDoctor: postInforDoctor,
-    getDetailDoctorById: getDetailDoctorById, getBulkCreateSchedule,
+    getDetailDoctorById: getDetailDoctorById, getBulkCreateSchedule, getScheduleByDate,
+    getDoctorInforById,
 }
