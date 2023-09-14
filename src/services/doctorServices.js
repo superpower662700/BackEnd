@@ -241,7 +241,8 @@ let getScheduleByIdDate = (doctorId, date) => {
                     date: formatedDate
                 },
                 include: [
-                    { model: db.AllCode, as: 'timeTypeData', attributes: ['valueEn', 'valueVi'] }
+                    { model: db.AllCode, as: 'timeTypeData', attributes: ['valueEn', 'valueVi'] },
+                    { model: db.User, as: 'doctorData', attributes: ['firstName', 'lastName'] },
                 ],
                 raw: false,
                 nest: true,
@@ -259,6 +260,7 @@ let getScheduleByIdDate = (doctorId, date) => {
             }
         } catch (e) {
             reject(e)
+            console.log(e);
         }
     })
 }
