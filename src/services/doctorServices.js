@@ -100,6 +100,8 @@ let saveInforDoctor = (data) => {
                     doctorInfor.priceId = data.priceId;
                     doctorInfor.paymentId = data.paymentId;
                     doctorInfor.provinceId = data.provinceId;
+                    doctorInfor.clinicId = data.clinicId;
+                    doctorInfor.specialtyId = data.specialtyId;
                     doctorInfor.addressClinic = data.addressClinic;
                     doctorInfor.nameClinic = data.nameClinic;
                     doctorInfor.note = data.note;
@@ -113,7 +115,9 @@ let saveInforDoctor = (data) => {
                         provinceId: data.provinceId,
                         addressClinic: data.addressClinic,
                         nameClinic: data.nameClinic,
-                        note: data.nameClinic
+                        note: data.nameClinic,
+                        clinicId: data.clinicId,
+                        specialtyId: data.specialtyId
                     })
                 }
 
