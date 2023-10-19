@@ -12,22 +12,16 @@ let postCreateSpecialty = (data) => {
                     errMessage: 'Missing parameter',
                 })
             } else {
-                if (data.type && data.type === 'ALL') {
-                    await db.Specialty.create({
-                        name: data.name,
-                        descriptionHTML: data.descriptionHTML,
-                        descriptionMarkdown: data.descriptionMarkdown,
-                        image: data.image
-                    })
-                    resolve({
-                        errCode: 0,
-                        errMessage: 'Create a new specialty success',
-                    })
-                }
-                else {
-                    return
-                }
-
+                await db.Specialty.create({
+                    name: data.name,
+                    descriptionHTML: data.descriptionHTML,
+                    descriptionMarkdown: data.descriptionMarkdown,
+                    image: data.image
+                })
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Create a new specialty success',
+                })
             }
         }
         catch (e) {

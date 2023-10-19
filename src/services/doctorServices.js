@@ -310,11 +310,57 @@ let getInforDoctorById = (doctorId) => {
         }
     })
 }
+
+let getPatientByDoctorId = (doctorId, date) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            if (!doctorId || !date) {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'Missing parameter',
+                })
+            }
+            let formatedDate = new Date(date).getTime();
+            let res = await db.Booking.findAll({
+                where: {
+                    statusId: 'S2',
+                    doctorId: doctorId,
+                    date: formatedDate
+                },
+                include: [
+                    { model: db.AllCode, as: 'timeTypeBookingData', attributes: ['valueEn', 'valueVi'] },
+                    {
+                        model: db.User,
+                        include: [
+                            { model: db.AllCode, as: 'genderData', attributes: ['valueEn', 'valueVi'] }
+                        ]
+                    }
+                ],
+                raw: false,
+                nest: true,
+            });
+            if (!res) {
+                resolve({
+                    errCode: 0,
+                    data: [],
+                })
+            } else {
+                resolve({
+                    errCode: 0,
+                    data: res,
+                })
+            }
+        } catch (e) {
+            reject(e)
+            console.log(e);
+        }
+    })
+}
 module.exports = {
     getTopDoctor: getTopDoctor,
     getAllDoctor: getAllDoctor,
     saveInforDoctor: saveInforDoctor,
     getDetailDoctor: getDetailDoctor,
     getCreateSchedule, getScheduleByIdDate,
-    getInforDoctorById,
+    getInforDoctorById, getPatientByDoctorId
 }

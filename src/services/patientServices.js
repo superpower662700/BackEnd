@@ -30,6 +30,7 @@ let postPatientBooking = (data) => {
                         email: data.email
                     },
                     defaults: {
+                        firstName: data.fullName,
                         email: data.email,
                         gender: data.gender,
                         address: data.address,
